@@ -26,6 +26,7 @@
 
 <script>
 import { Howl } from 'howler'
+import store from '../store/index'
 
 export default {
   name: 'releases',
@@ -52,14 +53,14 @@ export default {
         autoplay: true,
         html5: true
       })
-      // TODO State management with redux to assign values or
-      // Create a class player method to use with howl where the ID can be passed
-      console.log(soundId)
-      sound.stop(1)
-      console.log(sound)
-      sound.play(1)
+      // Still does not work seems to be using different instances of Howl
+      // Which it should be doing, but it seems incabable of stopping the exsiting sound.
+      console.log(`Previous track: ${store.state.sound}`)
+      sound.stop(store.state.sound)
+      sound.play()
       const soundId = sound.play()
-      console.log(soundId)
+      store.state.sound = soundId
+      console.log(`New track: ${store.state.sound}`)
     }
   },
   mounted () {
