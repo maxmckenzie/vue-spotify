@@ -25,6 +25,8 @@
 </template>
 
 <script>
+import { Howl } from 'howler'
+
 export default {
   name: 'releases',
   data () {
@@ -44,7 +46,20 @@ export default {
         })
     },
     play (track) {
-      console.log(`Play: ${track.name}`)
+      console.log(`Playing: ${track.name}`)
+      const sound = new Howl({
+        src: [track.preview_url],
+        autoplay: true,
+        html5: true
+      })
+      // TODO State management with redux to assign values or
+      // Create a class player method to use with howl where the ID can be passed
+      console.log(soundId)
+      sound.stop(1)
+      console.log(sound)
+      sound.play(1)
+      const soundId = sound.play()
+      console.log(soundId)
     }
   },
   mounted () {

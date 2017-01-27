@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import Releases from './components/releases'
+import Releases from './components/Releases'
 
 export default {
   name: 'app',
