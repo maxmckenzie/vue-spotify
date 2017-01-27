@@ -2,6 +2,10 @@
 
 > A Vue.js project
 
+This app uses a hard coded list of comma separated Spotify album ID's. It then pulls in the data via the Spotify Web API and adds it to the dom.
+
+The reason i created this was i wanted to publish a list of the albums i have published as part of a record label i've been running on and off for some time.
+
 ## Build Setup
 
 ``` bash
