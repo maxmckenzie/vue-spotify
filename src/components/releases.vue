@@ -3,8 +3,13 @@
     <li v-for="release in releases">
         {{ release.name }}
         <span v-for="artist in release.artists">
-          {{ artist.name }}
+          - {{ artist.name }}
         </span>
+        <ul>
+          <li v-for="image in release.images">
+            <img v-if="image.width === 300" :src="image.url" alt="release artwork">
+          </li>
+        </ul>
         <ul>
           <li v-for="track in release.tracks.items">
             {{ track.name }}
@@ -32,7 +37,6 @@ export default {
       this.$http.get(`https://api.spotify.com/v1/albums?ids=${catalogue}`)
         .then((responce) => {
           this.releases = responce.data.albums
-          console.log(this.releases)
         }, (error) => {
           console.log(error.statusText)
         })
@@ -49,6 +53,9 @@ export default {
     list-style: none;
     > li {
       font-weight: 700
+    }
+    >li > ul {
+      list-style: none;
     }
     > li > ul > li {
       font-weight: 400
