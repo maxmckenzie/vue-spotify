@@ -12,10 +12,12 @@
         </ul>
         <ul>
           <li v-for="track in release.tracks.items">
-            {{ track.name }}
-            {{ track.duration_ms }}
-            {{ track.preview_url }}
-            {{ track.track_number }}
+            <button type="button" v-on:click="play( track )" name="play">
+              {{ track.name }}
+              {{ track.duration_ms }}
+              {{ track.preview_url }}
+              {{ track.track_number }}
+            </button>
           </li>
         </ul>
     </li>
@@ -40,6 +42,9 @@ export default {
         }, (error) => {
           console.log(error.statusText)
         })
+    },
+    play (track) {
+      console.log(`Play: ${track.name}`)
     }
   },
   mounted () {
